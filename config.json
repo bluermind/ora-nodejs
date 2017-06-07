@@ -1,0 +1,14 @@
+    {        
+        "local" : {
+            "apiUrl": "http://localhost:3000/api",
+            "secret": "1055555501"
+        },
+        "development" : {
+            "apiUrl": "http://222.107.159.147:3000/api",
+            "secret": "1055555501"
+        },
+        "production" : {
+            "apiUrl": "http://prod.com/api",
+            "secret": "1055555501"
+        }
+    }

@@ -1,0 +1,70 @@
+<h1>Sample Page</h1>
+<div class="container"> 
+    <div class="card row">
+        <table class="table table-bordered col">
+            <thead>
+                <tr>
+                <th>#</th>
+                <th>도시명</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="location in vm.locations">
+                <th scope="row">{{location.lid}}</th>
+                <td>{{location.city}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="card-deck">
+        <div class="card form-group">
+            <h3 class="card-header">조명제어</h3>
+            
+            <div class="card-block row">
+                <input type="number" class="form-control col-sm-3" ng-model="vm.setGroup.id" placeholder="그룹번호">                
+            </div>                
+            <div class="card-block row">
+                <p class="card-text col-12">그룹명 변경</p>
+                <input type="text" class="form-control col-sm-6" ng-model="vm.setGroup.stringGroupName" placeholder="그룹명">
+                <button class="btn btn-primary" ng-click="vm.updateGroupName()">그룹명변경</button>
+            </div>
+            <div class="card-block row">
+                <p class="card-text col-12">제어값 설정</p>
+                <div class="col-12 row">
+                <select required class="custom-select form-control col-6 offset-3" ng-model="vm.setGroup.stringControl">
+                    <option value="">모드선택</option>
+                    <option ng-repeat="mode in vm.modes" ng-value="mode.value">{{mode.text}}</option>
+                </select>
+                 </div>
+                <p class="card-text col-12"> </p>
+                <div class="input-group input-group-lg col-sm-5"
+                    ng-if="vm.setGroup.stringControl != 4">
+                    <span class="input-group-addon" id="sizing-addon1">최대밝기</span>
+                    <input type="text" class="form-control" reset ng-model="vm.setGroup.ControlParam.numericHigh" aria-describedby="sizing-addon1">
+                </div>
+                <div class="input-group input-group-lg col-sm-5"
+                    ng-if="vm.setGroup.stringControl != 4">
+                    <span class="input-group-addon" id="sizing-addon2">최소밝기</span>
+                    <input type="text" class="form-control" reset ng-model="vm.setGroup.ControlParam.numericLow" aria-describedby="sizing-addon2">
+                </div>
+                <div class="input-group input-group-lg col-sm-5"
+                    ng-if="vm.setGroup.stringControl == 1 || vm.setGroup.stringControl == 2" >
+                    <span class="input-group-addon" id="sizing-addon3">ON-TIME</span>
+                    <input type="text" class="form-control" reset 
+                        ng-model="vm.setGroup.ControlParam.numericOnTime" aria-describedby="sizing-addon3">
+                </div>
+                <div class="input-group input-group-lg col-sm-5"
+                    ng-if="vm.setGroup.stringControl == 1 || vm.setGroup.stringControl == 2">
+                    <span class="input-group-addon" id="sizing-addon4">OFF-TIME</span>
+                    <input type="text" class="form-control" reset ng-model="vm.setGroup.ControlParam.numericOffTime" aria-describedby="sizing-addon4">
+                </div>
+                <div class="input-group input-group-lg col-sm-5"
+                    ng-if="vm.setGroup.stringControl == 4">
+                    <span class="input-group-addon" id="sizing-addon5">디밍 TIME</span>
+                    <input type="text" class="form-control" reset ng-model="vm.setGroup.ControlParam.numericDim" aria-describedby="sizing-addon5">
+                </div>
+                <button class="btn btn-primary" ng-click="vm.updateGroupStatus()">적용</button>
+            </div>
+        </div>    
+    </div>
+</div>
